@@ -39,15 +39,7 @@ This project automates the pipeline for scraping AP (Advanced Placement) exam PD
      - Embeds the query using the same SentenceTransformer model.
      - Retrieves top-matching chunks from MongoDB using cosine similarity.
      - Sends the chunks and the user query to OpenAI’s GPT model (e.g., `gpt-4o-mini`) to generate a context-aware response.
-
-
-## Setup Instructions
-# Project Name
-
-Briefly describe the purpose of your project here, including key features and intended audience.
-
----
-
+     
 ## Setup Instructions
 
 ### Step 1: Create and Activate a Virtual Environment
