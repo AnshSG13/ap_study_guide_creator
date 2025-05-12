@@ -43,31 +43,23 @@ This project automates the pipeline for scraping AP (Advanced Placement) exam PD
 
 ## Setup Instructions
 
-1. **Install Dependencies**
 
-   Ensure you have **Poetry** installed. In the project directory, run:
+python3 -m venv .venv
+source .venv/bin/activate      # on Windows use: .venv\Scripts\activate
+pip install -r requirements.txt
+cd frontend
+npm install
+cd ..
+cat <<EOF > .env
+OPENAI_API_KEY=your_openai_api_key_here
+MONGODB_URI=your_mongodb_connection_string_here
+EOF
+cd backend
+uvicorn app:app --reload
+# in a separate terminal/window, run:
+cd frontend
+npm start
 
-   ```bash
-   poetry install
-   ```
-
-2. **Folder Structure**
-
-   Ensure that the following folders exist (or are created automatically by the scripts):
-   - `downloaded_files/` – for storing scraped PDF files.
-   - (Optional) `faiss_index.index` and `metadata.json` – will be created after processing.
-
-3. **Running the Project**
-
-   To start the process—scraping the AP websites for PDFs, processing the PDFs, and building the vector database—run:
-
-   ```bash
-   poetry run python main.py
-   ```
-
-   This command will:
-   - Scrape the URLs in `input_websites.csv` and download available PDFs.
-   - Process the PDFs by extracting their content, chunking the text, generating vector embeddings, and storing the results in a FAISS vector index.
 
 ## Notes
 
