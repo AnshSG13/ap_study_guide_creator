@@ -6,14 +6,18 @@ import PyPDF2
 from sentence_transformers import SentenceTransformer
 from pymongo import MongoClient
 from openai import OpenAI
+import Path
 
+
+parent_dir = Path(__file__).parent.parent  
+env_path = os.path.join(parent_dir, ".env") 
 # Load .env from backend directory
-load_dotenv("backend/.env")
+load_dotenv(env_path)
 
 # ─── MongoDB Atlas Setup ─────────────────────────────────────────────────────
 # Expects your Atlas connection string in the MONGODB_URI environment variable:
 #   export MONGODB_URI="mongodb+srv://<user>:<pass>@cluster0.xyz.mongodb.net/?retryWrites=true&w=majority"
-MONGO_URI = os.getenv("MONGO_URI") 
+MONGO_URI = os.getenv("MONGODB_URI") 
 OpenAI.api_key = os.getenv("OPENAI_API_KEY")
 if not MONGO_URI:
     raise RuntimeError("Set the MONGODB_URI environment variable to your Atlas URI")
