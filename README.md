@@ -42,23 +42,89 @@ This project automates the pipeline for scraping AP (Advanced Placement) exam PD
 
 
 ## Setup Instructions
+# Project Name
 
+Briefly describe the purpose of your project here, including key features and intended audience.
 
+---
+
+## Setup Instructions
+
+### Step 1: Create and Activate a Virtual Environment
+
+Create a Python virtual environment to isolate your project's dependencies:
+
+```bash
 python3 -m venv .venv
-source .venv/bin/activate      # on Windows use: .venv\Scripts\activate
+```
+
+Activate the virtual environment:
+
+* On **macOS/Linux**:
+
+  ```bash
+  source .venv/bin/activate
+  ```
+
+* On **Windows**:
+
+  ```cmd
+  .venv\Scripts\activate
+  ```
+
+### Step 2: Install Project Dependencies
+
+Install backend dependencies:
+
+```bash
 pip install -r requirements.txt
+```
+
+Install frontend dependencies:
+
+```bash
 cd frontend
 npm install
 cd ..
-cat <<EOF > .env
+```
+
+### Step 3: Configure API Keys and Database
+
+Create a `.env` file in the root of the project directory and add your credentials:
+
+```bash
 OPENAI_API_KEY=your_openai_api_key_here
 MONGODB_URI=your_mongodb_connection_string_here
-EOF
+```
+
+Replace placeholders (`your_openai_api_key_here` and `your_mongodb_connection_string_here`) with your actual API key and database connection string.
+
+### Step 4: Running the Application
+
+Start the backend server:
+
+```bash
 cd backend
 uvicorn app:app --reload
-# in a separate terminal/window, run:
+```
+
+In a separate terminal window or tab, start the frontend server:
+
+```bash
 cd frontend
 npm start
+```
+
+### Step 5: Accessing the Application
+
+Open your web browser and navigate to:
+
+```
+http://localhost:3000
+```
+
+or to the port indicated by your frontend server.
+
 
 
 ## Notes
